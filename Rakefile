@@ -5,4 +5,5 @@ require 'motion/project'
 Motion::Project::App.setup do |app|
   # Use `rake config' to see complete project settings.
   app.name = 'Todo'
+  app.deployment_target = '6.1'
 end
