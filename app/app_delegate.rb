@@ -1,20 +1,13 @@
 class AppDelegate
   def application(application, didFinishLaunchingWithOptions:launchOptions)
     @window = UIWindow.alloc.initWithFrame(UIScreen.mainScreen.bounds)
-    @window.makeKeyAndVisible
 
-    @table = UITableView.alloc.initWithFrame(UIScreen.mainScreen.bounds) 
+    @todos_controller = TodosController.alloc.initWithNibName(nil, bundle:nil)
 
-    todos = %w(Milk Orange\ Juice Apples Bananas Brocolli Carrots Beef Chicken Enchiladas Hot\ Dogs Butter Bread Pasta Rice)
-    todos.map! { |thing| "Buy #{thing}"}
+    @window.rootViewController =
+      UINavigationController.alloc.initWithRootViewController(@todos_controller)
 
-    @data_source = TodosDataSource.new
-
-    @data_source.data = todos
-
-    @table.dataSource = @data_source
-
-    @window.addSubview(@table)
+    @window.makeKeyAndVisible 
 
     true
   end
